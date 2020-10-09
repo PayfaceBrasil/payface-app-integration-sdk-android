@@ -95,4 +95,4 @@ e tente se certificar de que seu problema ainda não existe antes de [abrir uma 
 
 ## Licença
 
-Consulte [LICENSE.md](https://github.com/PayfaceBrasil/payface-app-integration-sdk-android/blob/master/LICENSE.md) e [NOTICE.md](https://github.com/PayfaceBrasil/payface-app-integration-sdk-android/blob/master/NOTICE.md) para mais informações.
+Consulte [LICENSE](https://github.com/PayfaceBrasil/payface-app-integration-sdk-android/blob/master/LICENSE) e [NOTICE](https://github.com/PayfaceBrasil/payface-app-integration-sdk-android/blob/master/NOTICE) para mais informações.
