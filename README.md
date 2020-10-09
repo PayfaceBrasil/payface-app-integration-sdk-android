@@ -74,6 +74,8 @@ Compile o projeto para realizar a integração via código.
     hybridActivity.putExtra("cellphone", cellphone)
     //Se não tiver a proxima linha, botão de voltar não aparecerá.
     hybridActivity.putExtra("button", button)
+    //1 para sandbox
+    hybridActivity.putExtra("environment", 1)
 
    startActivity(hybridActivity)
 ```
@@ -82,6 +84,8 @@ Observação
 1. Para utilizar os pârametros do usuário, é necessário preencher pelo menos o CPF.
 
 2. Caso o valor de **button** não seja configurado, o botão de voltar para a aplicação raiz não aparecerá. Para voltar será preciso utilizar o botão do android nativo.
+
+3. Para utilizar o ambiente sandbox basta passar como environment o valor 1 no extra da activity. Caso não seja definido, o ambiente padrão é de produção. 
 
 ## Serviços Suportados
 
