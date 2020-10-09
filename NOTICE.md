@@ -1,0 +1,5 @@
+Payface APP SDK Android
+Copyright 2020 Payface Pagamentos LTDA. All Rights Reserved.
+
+This product includes software developed at
+Payface Pagamentos LTDA (https://payface.com.br/).
