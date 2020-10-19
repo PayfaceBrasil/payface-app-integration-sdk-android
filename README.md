@@ -51,6 +51,12 @@ dependencies {
     implementation "androidx.camera:camera-view:1.0.0-alpha14"
 }
 ```
+No proguard-rules.pro adicionar a seguinte configuração 
+
+```
+-keep class br.com.payface.**  { *; }
+-keep class androidx.fragment.app.**  { *; }
+```
 
 Compile o projeto para realizar a integração via código.
 
