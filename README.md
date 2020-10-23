@@ -80,6 +80,12 @@ Compile o projeto para realizar a integração via código.
     hybridActivity.putExtra("cellphone", cellphone)
     //Se não tiver a proxima linha, botão de voltar não aparecerá.
     hybridActivity.putExtra("button", button)
+    //Trocar cor do botão
+    hybridActivity.putExtra("button_color", "#ff512e")
+    //Trocar cor do texto botão
+    hybridActivity.putExtra("button_text_color", "#fff12e")
+    //Trocar cor do Status Bar 
+    hybridActivity.putExtra("status_bar_color", "#fff12e")
     //1 para sandbox
     hybridActivity.putExtra("environment", 1)
 
@@ -91,7 +97,9 @@ Observação
 
 2. Caso o valor de **button** não seja configurado, o botão de voltar para a aplicação raiz não aparecerá. Para voltar será preciso utilizar o botão do android nativo.
 
-3. Para utilizar o ambiente sandbox basta passar como environment o valor 1 no extra da activity. Caso não seja definido, o ambiente padrão é de produção. 
+3. Para utilizar o ambiente sandbox basta passar como environment o valor 1 no extra da activity. Caso não seja definido, o ambiente padrão é o de produção.
+
+4. As cores devem ser no padrão hexadecimal.
 
 ## Serviços Suportados
 
