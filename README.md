@@ -49,6 +49,9 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     // CameraX View class
     implementation "androidx.camera:camera-view:1.0.0-alpha14"
+    
+    //FaceDetector
+    implementation 'com.google.android.gms:play-services-mlkit-face-detection:16.1.1'
 }
 ```
 No proguard-rules.pro adicionar a seguinte configuração 
@@ -61,6 +64,9 @@ No proguard-rules.pro adicionar a seguinte configuração
 Compile o projeto para realizar a integração via código.
 
 **Integração no código:**
+
+**Por Activity**
+
 ```
     import br.com.payface.hybrid.HybridActivity
     .
@@ -101,6 +107,51 @@ Observação
 
 4. As cores devem ser no padrão hexadecimal.
 
+**Por frame**
+
+Nessa maneira você tera maior liberdade de adicionar customização em sua activity, por exemplo adicionar ToolBar, mudar cores de ToolBar e StatusBar.
+
+No XML de sua activity colocar o container para aparecer o frame. A referencia para classe é **br.com.payface.hybrid.HybridFrameFragment**
+```
+ <androidx.fragment.app.FragmentContainerView
+    android:id="@+id/hybrid_fragment_container"
+    android:name="br.com.payface.hybrid.HybridFrameFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+```
+
+Enviar dados para o Frame através do Bundle
+
+```
+  val bundle = Bundle()
+  bundle.putString("partner", "partner")
+  bundle.putInt("environment", 1) // não definir para produção
+  bundle.putString("cpf", "")
+  bundle.putString("name", "")
+  bundle.putString("cellphone", "")
+
+  val fm = this.supportFragmentManager
+  val hybridFragment = fm.findFragmentById(R.id.hybrid_fragment_container)!!
+  hybridFragment.arguments = bundle
+```
+
+Sugestão para controle da webview através do back button nativo do android: 
+
+```
+override fun onBackPressed() {
+  val fm = this.supportFragmentManager
+  val hybridFragment = fm.findFragmentById(R.id.hybrid_fragment_container)!!
+  val myWebView: WebView = (hybridFragment as HybridFrameFragment).getWebview()
+  if (hybridFragment.isCameraOpened()) {
+      hybridFragment.closeCameraFragment()
+  }
+  if (myWebView.canGoBack()) 
+    myWebView.goBack() 
+  else {
+    super.onBackPressed()
+  }
+}
+```
 ## Serviços Suportados
 
 Acesso ao app web Payface com utilização da câmera nativa Android.
