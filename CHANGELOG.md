@@ -5,3 +5,6 @@
 * Customizar cor do status bar (Activity interna)
 * Utilizar detector facial
 * Implementação do frame do app hibrido para utilizar em activity externa ao SDK.
+
+## Janeiro de 2021
+* Atualização da versão do cameraX para a versão 1.0.0-rc01

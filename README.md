@@ -103,7 +103,7 @@ Observação
 
 2. Caso o valor de **button** não seja configurado, o botão de voltar para a aplicação raiz não aparecerá. Para voltar será preciso utilizar o botão do android nativo.
 
-3. Para utilizar o ambiente sandbox basta passar como environment o valor 1 no extra da activity. Caso não seja definido, o ambiente padrão é o de produção.
+3. Para utilizar o ambiente sandbox basta passar como environment o valor 1 no extra da activity. Não definir essa variável para acessar o ambiente o de produção.
 
 4. As cores devem ser no padrão hexadecimal.
 
@@ -125,7 +125,7 @@ Enviar dados para o Frame através do Bundle
 ```
   val bundle = Bundle()
   bundle.putString("partner", "partner")
-  bundle.putInt("environment", 1) // não definir para produção
+  bundle.putInt("environment", 1) // não definir para o ambiente de produção produção
   bundle.putString("cpf", "")
   bundle.putString("name", "")
   bundle.putString("cellphone", "")
@@ -152,6 +152,12 @@ override fun onBackPressed() {
   }
 }
 ```
+
+Observação
+1. Para utilizar os pârametros do usuário, é necessário preencher pelo menos o CPF.
+
+2. Para utilizar o ambiente sandbox basta passar como environment o valor 1 no extra da activity. Não definir essa variável para acessar o ambiente o de produção.
+
 ## Serviços Suportados
 
 Acesso ao app web Payface com utilização da câmera nativa Android.
