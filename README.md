@@ -35,20 +35,20 @@ Adicionar as seguintes dependencias:
 dependencies {
     implementation files('libs/payface-app.aar')
 
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.android.material:material:1.2.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
 
-    def camerax_version = "1.0.0-beta07"
+    def camerax_version = "1.0.0-rc01"
     // CameraX core library using camera2 implementation
     implementation "androidx.camera:camera-camera2:$camerax_version"
     // CameraX Lifecycle Library
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     // CameraX View class
-    implementation "androidx.camera:camera-view:1.0.0-alpha14"
+    implementation "androidx.camera:camera-view:1.0.0-alpha20"
     
     //FaceDetector
     implementation 'com.google.android.gms:play-services-mlkit-face-detection:16.1.1'
@@ -64,48 +64,6 @@ No proguard-rules.pro adicionar a seguinte configuração
 Compile o projeto para realizar a integração via código.
 
 **Integração no código:**
-
-**Por Activity**
-
-```
-    import br.com.payface.hybrid.HybridActivity
-    .
-    .
-    .
-    val hybridActivity =  Intent(this, HybridActivity::class.java)
-    val partner = ""
-    val cpf = ""
-    val name = ""
-    val cellphone = ""
-    val button = "Voltar para aplicação"
-
-    hybridActivity.putExtra("partner", partner)
-    
-    hybridActivity.putExtra("cpf", cpf)
-    hybridActivity.putExtra("name", name)
-    hybridActivity.putExtra("cellphone", cellphone)
-    //Se não tiver a proxima linha, botão de voltar não aparecerá.
-    hybridActivity.putExtra("button", button)
-    //Trocar cor do botão
-    hybridActivity.putExtra("button_color", "#ff512e")
-    //Trocar cor do texto botão
-    hybridActivity.putExtra("button_text_color", "#fff12e")
-    //Trocar cor do Status Bar 
-    hybridActivity.putExtra("status_bar_color", "#fff12e")
-    //1 para sandbox
-    hybridActivity.putExtra("environment", 1)
-
-   startActivity(hybridActivity)
-```
-
-Observação
-1. Para utilizar os pârametros do usuário, é necessário preencher pelo menos o CPF.
-
-2. Caso o valor de **button** não seja configurado, o botão de voltar para a aplicação raiz não aparecerá. Para voltar será preciso utilizar o botão do android nativo.
-
-3. Para utilizar o ambiente sandbox basta passar como environment o valor 1 no extra da activity. Não definir essa variável para acessar o ambiente o de produção.
-
-4. As cores devem ser no padrão hexadecimal.
 
 **Por frame**
 
@@ -124,18 +82,18 @@ Enviar dados para o Frame através do Bundle
 
 ```
   val bundle = Bundle()
-  bundle.putString("partner", "partner")
-  bundle.putInt("environment", 1) // não definir para o ambiente de produção produção
-  bundle.putString("cpf", "")
-  bundle.putString("name", "")
-  bundle.putString("cellphone", "")
+  bundle.putString("partner", "Nome do Partner")
+  bundle.putSerializable("environment", HybridFrameFragment.Environment.PRODUCTION);
+  bundle.putString("cpf", "numero cpf")
+  bundle.putString("name", "Nome do usuário")
+  bundle.putString("cellphone", "número do celular")
 
   val fm = this.supportFragmentManager
   val hybridFragment = fm.findFragmentById(R.id.hybrid_fragment_container)!!
   hybridFragment.arguments = bundle
 ```
 
-Sugestão para controle da webview através do back button nativo do android: 
+Controle da webview através do back button nativo do android: 
 
 ```
 override fun onBackPressed() {
@@ -156,7 +114,7 @@ override fun onBackPressed() {
 Observação
 1. Para utilizar os pârametros do usuário, é necessário preencher pelo menos o CPF.
 
-2. Para utilizar o ambiente sandbox basta passar como environment o valor 1 no extra da activity. Não definir essa variável para acessar o ambiente o de produção.
+2. Para utilizar o ambiente sandbox basta passar como environment o valor HybridFrameFragment.Environment.SANDBOX no bundle. Para produção enviar o valor HybridFrameFragment.Environment.PRODUCTION.
 
 ## Serviços Suportados
 
