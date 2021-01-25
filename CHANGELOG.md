@@ -6,6 +6,9 @@
 * Utilizar detector facial
 * Implementação do frame do app hibrido para utilizar em activity externa ao SDK.
 
-## Janeiro de 2021
+## Versão 1.2
 * Atualização da versão do cameraX para a versão 1.0.0-rc01
 * Nova estrategia para escolha da resolução da camera.
+
+## Versão 1.3
+* Abertura de link externo em um novo frame.
