@@ -97,17 +97,12 @@ Controle da webview através do back button nativo do android:
 
 ```
 override fun onBackPressed() {
-  val fm = this.supportFragmentManager
-  val hybridFragment = fm.findFragmentById(R.id.hybrid_fragment_container)!!
-  val myWebView: WebView = (hybridFragment as HybridFrameFragment).getWebview()
-  if (hybridFragment.isCameraOpened()) {
-      hybridFragment.closeCameraFragment()
-  }
-  if (myWebView.canGoBack()) 
-    myWebView.goBack() 
-  else {
-    super.onBackPressed()
-  }
+   FragmentManager fm = this.getSupportFragmentManager();
+   Fragment hybridFragment = fm.findFragmentById(R.id.hybrid_fragment_container);
+   assert hybridFragment != null;
+
+   if (!((HybridFrameFragment) hybridFragment).backNavigation())
+      super.onBackPressed();
 }
 ```
 
