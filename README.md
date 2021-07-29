@@ -7,7 +7,8 @@ Para notas de lançamento, consulte [CHANGELOG.md](https://github.com/PayfaceBra
 ## Requisitos
 **Versão**
 minSdkVersion 21
-targetSdkVersion 29
+targetSdkVersion 30
+kotlin_version = '1.5.21'
 
 ## Como Usar
 
@@ -36,22 +37,23 @@ dependencies {
     implementation files('libs/payface-app.aar')
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'com.google.android.material:material:1.4.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
-    def camerax_version = "1.0.0-rc01"
+     def camerax_version = "1.1.0-alpha07"
     // CameraX core library using camera2 implementation
     implementation "androidx.camera:camera-camera2:$camerax_version"
     // CameraX Lifecycle Library
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     // CameraX View class
-    implementation "androidx.camera:camera-view:1.0.0-alpha20"
+    implementation "androidx.camera:camera-view:1.0.0-alpha27"
+
     
     //FaceDetector
-    implementation 'com.google.android.gms:play-services-mlkit-face-detection:16.1.1'
+implementation 'com.google.android.gms:play-services-mlkit-face-detection:16.2.0'
 }
 ```
 No proguard-rules.pro adicionar a seguinte configuração 
@@ -87,6 +89,8 @@ Enviar dados para o Frame através do Bundle
   bundle.putString("cpf", "numero cpf")
   bundle.putString("name", "Nome do usuário")
   bundle.putString("cellphone", "número do celular")
+  bundle.putBoolean("hiddenActionBar", true) //Opcional
+
 
   val fm = this.supportFragmentManager
   val hybridFragment = fm.findFragmentById(R.id.hybrid_fragment_container)!!
@@ -110,6 +114,8 @@ Observação
 1. Para utilizar os pârametros do usuário, é necessário preencher pelo menos o CPF.
 
 2. Para utilizar o ambiente sandbox basta passar como environment o valor HybridFrameFragment.Environment.SANDBOX no bundle. Para produção enviar o valor HybridFrameFragment.Environment.PRODUCTION.
+
+3. O parâmetro hiddenActionBar é opcional, ele esconde o action bar.
 
 ## Serviços Suportados
 

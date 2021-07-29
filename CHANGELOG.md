@@ -12,3 +12,8 @@
 
 ## Versão 1.3
 * Abertura de link externo em um novo frame.
+
+## Versão 1.3.2
+* Problema na abertura da camera.
+* Remoção do actionbar de forma parametrizada.
+* Atualização das bibliotecas internas. 
