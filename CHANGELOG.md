@@ -17,3 +17,6 @@
 * Problema na abertura da camera.
 * Remoção do actionbar de forma parametrizada.
 * Atualização das bibliotecas internas. 
+
+## Versão 1.4
+* Controle para fechar o teclado via SDK.

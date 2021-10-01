@@ -15,6 +15,17 @@ kotlin_version = '1.5.21'
 Adicionar o AAR na pasta lib do projeto android:
 *[PROJETO]/app/libs* 
 
+No build.gradle do app no contexto plugins adicionar a seguinte configuração:
+```
+plugins {
+    .
+    .
+    .
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.31'
+
+}
+```
+
 No build.gradle do app no contexto android adicionar a seguinte configuração:
 
 ```
@@ -53,7 +64,10 @@ dependencies {
 
     
     //FaceDetector
-implementation 'com.google.android.gms:play-services-mlkit-face-detection:16.2.0'
+    implementation 'com.google.android.gms:play-services-mlkit-face-detection:16.2.0'
+    
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0'
+
 }
 ```
 No proguard-rules.pro adicionar a seguinte configuração 
@@ -61,6 +75,28 @@ No proguard-rules.pro adicionar a seguinte configuração
 ```
 -keep class br.com.payface.**  { *; }
 -keep class androidx.fragment.app.**  { *; }
+
+
+-keepattributes *Annotation*, InnerClasses
+-dontnote kotlinx.serialization.AnnotationsKt # core serialization annotations
+
+# kotlinx-serialization-json specific. Add this if you have java.lang.NoClassDefFoundError kotlinx.serialization.json.JsonObjectSerializer
+-keepclassmembers class kotlinx.serialization.json.** {
+    *** Companion;
+}
+-keepclasseswithmembers class kotlinx.serialization.json.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+# Change here br.com.payface
+-keep,includedescriptorclasses class br.com.payface.**$$serializer { *; } # <-- change package name to your app's
+-keepclassmembers class br.com.payface.** { # <-- change package name to your app's
+    *** Companion;
+}
+-keepclasseswithmembers class br.com.payface.** { # <-- change package name to your app's
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
 ```
 
 Compile o projeto para realizar a integração via código.
