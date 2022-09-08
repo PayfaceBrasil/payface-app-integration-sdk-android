@@ -20,3 +20,9 @@
 
 ## Versão 1.4
 * Controle para fechar o teclado via SDK.
+
+## Versão 1.5
+* Atualização de bibliotecas
+
+## Versão 1.6
+* Atualização de bibliotecas

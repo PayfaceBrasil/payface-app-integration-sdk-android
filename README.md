@@ -7,8 +7,8 @@ Para notas de lançamento, consulte [CHANGELOG.md](https://github.com/PayfaceBra
 ## Requisitos
 **Versão**
 minSdkVersion 21
-targetSdkVersion 30
-kotlin_version = '1.5.21'
+targetSdkVersion 33
+kotlin_version = '1.7.10'
 
 ## Como Usar
 
@@ -47,25 +47,27 @@ Adicionar as seguintes dependencias:
 dependencies {
     implementation files('libs/payface-app.aar')
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-     def camerax_version = "1.1.0-alpha07"
+     // CameraX core library
+    def camerax_version = "1.2.0-alpha04"
+    implementation "androidx.camera:camera-core:$camerax_version"
+
     // CameraX core library using camera2 implementation
     implementation "androidx.camera:camera-camera2:$camerax_version"
     // CameraX Lifecycle Library
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     // CameraX View class
-    implementation "androidx.camera:camera-view:1.0.0-alpha27"
-
+    implementation "androidx.camera:camera-view:1.2.0-alpha04"
     
     //FaceDetector
-    implementation 'com.google.android.gms:play-services-mlkit-face-detection:16.2.0'
-    
+    implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.0.1'
+
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0'
 
 }
